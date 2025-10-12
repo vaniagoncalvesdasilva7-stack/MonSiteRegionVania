@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Transports — MonSiteRegion</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand"><a href="index.html">MonSiteRegion</a></h1>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="activites.html">Activités</a>
+        <a href="sorties.html">Sorties</a>
+        <a href="transports.html" class="active">Transports</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="transportsSection">
+      <h2>Transports par ville</h2>
+      <label for="villeSelect">Choisir une ville :</label>
+      <select id="villeSelect">
+        <option value="">Sélectionner une ville</option>
+        <option value="villeA">Ville A</option>
+        <option value="villeB">Ville B</option>
+      </select>
+
+      <div id="infoTransport" class="transport-info"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 — MonSiteRegion</p>
+    </div>
+  </footer>
+</body>
+</html>
