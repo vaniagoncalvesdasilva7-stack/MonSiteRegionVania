@@ -120,4 +120,8 @@ footer {
 .hero-region {
   background-image: url('images/hero-region.jpg');
 }
+
+  .hero-fun {
+  background-image: url('images/hero-fun.jpg');
+}
 }
