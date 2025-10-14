@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte interactive - Provence-Alpes-Côte d’Azur</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Feuilles de style Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 80vh;
+      margin: 30px auto;
+      width: 90%;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+    }
+    .filters {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .filters label {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Carte interactive</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="region.html">Découvrir la région</a></li>
+        <li><a href="activites-fun.html">Activités fun</a></li>
+        <li><a href="activites-sportives.html">Activités sportives</a></li>
+        <li><a href="lieux-historiques.html">Lieux historiques</a></li>
+        <li><a href="traditions.html">Traditions & gastronomie</a></li>
+        <li><a href="carte.html" class="active">Carte interactive</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero hero-carte">
+    <div class="overlay">
+      <h2>Explore la Provence-Alpes-Côte d’Azur à travers la carte 🗺️</h2>
+      <p>Filtre les points d’intérêt selon tes envies !</p>
+    </div>
+  </section>
+
+  <div class="filters">
+    <label><input type="checkbox" class="filter" value="restaurant" checked> 🍴 Restaurants</label>
+    <label><input type="checkbox" class="filter" value="fun" checked> 🎢 Activités fun</label>
+    <label><input type="checkbox" class="filter" value="sport" checked> ⚽ Activités sportives</label>
+    <label><input type="checkbox" class="filter" value="histoire" checked> 🏛️ Lieux historiques</label>
+    <label><input type="checkbox" class="filter" value="tradition" checked> 🍋 Traditions & gastronomie</label>
+  </div>
+
+  <div id="map"></div>
+
+  <footer>
+    <p>© 2025 - Site personnel créé par <strong>Vânia Gonçalves da Silva</strong></p>
+  </footer>
+
+  <!-- Script Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Initialisation de la carte
+    const map = L.map('map').setView([43.94, 6.07], 8); // Centré sur la région PACA
+
+    // Couche de fond
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    // Points d'intérêt
+    const lieux = [
+      { name: "Restaurant Le Clos Saint-Pierre", coords: [43.727, 7.045], type: "restaurant" },
+      { name: "Verdon Aventures (Canoë)", coords: [43.741, 6.372], type: "sport" },
+      { name: "Parc Marineland", coords: [43.613, 7.122], type: "fun" },
+      { name: "Palais des Papes", coords: [43.949, 4.805], type: "histoire" },
+      { name: "Marché d’Aix-en-Provence", coords: [43.529, 5.447], type: "tradition" },
+      { name: "Calanques de Cassis (Randonnée)", coords: [43.214, 5.528], type: "sport" },
+      { name: "Festival de Cannes", coords: [43.552, 7.017], type: "fun" },
+      { name: "Les Arènes d’Arles", coords: [43.677, 4.630], type: "histoire" },
+      { name: "Maison des calissons", coords: [43.527, 5.445], type: "tradition" },
+      { name: "Restaurant La Table du Chef (Nice)", coords: [43.701, 7.268], type: "restaurant" }
+    ];
+
+    const markers = [];
+
+    // Fonction d’ajout de marqueurs
+    lieux.forEach(lieu => {
+      const marker = L.marker(lieu.coords).bindPopup(`<strong>${lieu.name}</strong>`);
+      marker.type = lieu.type;
+      marker.addTo(map);
+      markers.push(marker);
+    });
+
+    // Gestion des filtres
+    const filters = document.querySelectorAll('.filter');
+    filters.forEach(filter => {
+      filter.addEventListener('change', () => {
+        const activeFilters = Array.from(filters)
+          .filter(f => f.checked)
+          .map(f => f.value);
+        markers.forEach(marker => {
+          if (activeFilters.includes(marker.type)) {
+            marker.addTo(map);
+          } else {
+            map.removeLayer(marker);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
