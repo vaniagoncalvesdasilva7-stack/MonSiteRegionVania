@@ -1,143 +1,196 @@
-/* === Style global du site Provence-Alpes-Côte d’Azur === */
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@500&display=swap');
+/* ==============================
+   STYLE GLOBAL - Provence-Alpes-Côte d’Azur
+   ============================== */
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
   background-color: #fffaf3;
   color: #333;
   line-height: 1.6;
 }
 
-/* === En-tête et navigation === */
+/* ==============================
+   HEADER ET NAVIGATION
+   ============================== */
+
 header {
-  background-color: #f4e3c2;
-  color: #4a2c2a;
-  padding: 1rem 0;
+  background-color: #ffd166;
+  color: #333;
+  padding: 20px 0;
   text-align: center;
-  border-bottom: 3px solid #d5b895;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
   margin: 0;
-  font-family: 'Playfair Display', serif;
   font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 1rem 0 0;
+  margin: 15px 0 0 0;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-nav a {
+nav ul li {
+  margin: 8px 12px;
+}
+
+nav ul li a {
   text-decoration: none;
-  color: #4a2c2a;
-  background-color: #fdf1dd;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: 0.3s ease;
+  color: #333;
+  font-weight: 600;
+  background-color: #ffe8a1;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
-nav a:hover,
-nav a.active {
-  background-color: #d5b895;
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #ffb703;
   color: white;
 }
 
-/* === Section héro (image principale) === */
+/* ==============================
+   BANNIÈRES / HERO
+   ============================== */
+
 .hero {
-  background-image: url('images/hero-paca.jpg');
+  position: relative;
+  height: 300px;
   background-size: cover;
   background-position: center;
-  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   text-align: center;
-  position: relative;
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: white;
+  padding: 40px;
   border-radius: 10px;
 }
 
 .hero h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  margin: 0;
+  font-size: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .hero p {
-  font-size: 1.2rem;
+  margin-top: 10px;
+  font-size: 1.1rem;
 }
 
-/* === Section d’intro === */
-.intro {
+/* ==============================
+   SECTIONS DE CONTENU
+   ============================== */
+
+section.intro {
   max-width: 900px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #fff6e5;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  margin: 50px auto;
+  padding: 0 20px;
 }
 
-.intro h3 {
-  font-family: 'Playfair Display', serif;
-  color: #784b2a;
+section.intro h3 {
+  color: #e76f51;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
-/* === Pied de page === */
+section.intro p {
+  margin-bottom: 15px;
+}
+
+section.intro ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+section.intro li {
+  margin: 8px 0;
+  background: #fff3e0;
+  padding: 10px 15px;
+  border-left: 4px solid #f4a261;
+  border-radius: 6px;
+}
+
+/* ==============================
+   PIED DE PAGE
+   ============================== */
+
 footer {
-  background-color: #f4e3c2;
+  background-color: #264653;
+  color: #fff;
   text-align: center;
-  padding: 1rem;
-  color: #4a2c2a;
+  padding: 20px 0;
+  margin-top: 40px;
   font-size: 0.9rem;
-  border-top: 3px solid #d5b895;
-  margin-top: 3rem;
 }
 
-/* === Mise en page responsive === */
+footer strong {
+  color: #ffd166;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
+
 @media (max-width: 768px) {
-  .hero h2 {
-    font-size: 2rem;
+  header h1 {
+    font-size: 1.6rem;
   }
 
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
+  .hero {
+    height: 220px;
   }
-  
+
+  .overlay {
+    padding: 20px;
+  }
+
+  section.intro {
+    margin: 30px auto;
+  }
+}
+
+/* ==============================
+   BANNIÈRES SPÉCIFIQUES
+   ============================== */
+
+.hero-accueil {
+  background-image: url('images/hero-accueil.jpg');
+}
+
 .hero-region {
   background-image: url('images/hero-region.jpg');
 }
 
-  .hero-fun {
+.hero-fun {
   background-image: url('images/hero-fun.jpg');
 }
 
-  .hero-sport {
+.hero-sport {
   background-image: url('images/hero-sport.jpg');
 }
 
-  .hero-histoire {
+.hero-histoire {
   background-image: url('images/hero-histoire.jpg');
 }
 
-  .hero-traditions {
+.hero-traditions {
   background-image: url('images/hero-traditions.jpg');
 }
 
-  .hero-carte {
+.hero-carte {
   background-image: url('images/hero-carte.jpg');
-}
 }
