@@ -116,4 +116,8 @@ footer {
     flex-direction: column;
     gap: 0.5rem;
   }
+  
+.hero-region {
+  background-image: url('images/hero-region.jpg');
+}
 }
